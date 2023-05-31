@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Aispresso</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="onboarding_slide1_title">Konsultasi </string>
+    <string name="onboarding_slide1_subtitle">Perkebunan kopi </string>
+    <string name="onboarding_slide1_desc">Rasakan pengalaman yang berbeda mengenai konsultasi online perkebunan kopi.</string>
+
+    <string name="onboarding_slide2_title">Cek kualitas kopi</string>
+    <string name="onboarding_slide2_subtitle">Kamu di aispresso</string>
+    <string name="onboarding_slide2_desc">Keajaiban kopi dalam setiap biji yang tumbuh.</string>
+    <string name="UI_info_camera">
+        Here is an explanation of some of the buttons : \n
+        👉🏻 back button to return to previous page \n
+        👉🏻 information button to display additional information \n
+        👉🏻 gallery button to upload image from gallery \n
+        👉🏻 shutter button to take a picture using the camera \n
+        👉🏻 switch button to rotate camera lens
+    </string>
+
+    <string name="onboarding_slide3_title">Cari investor kamu </string>
+    <string name="onboarding_slide3_subtitle">Di aispresso</string>
+    <string name="onboarding_slide3_desc">Berpartisipasi dalam perekonomian lokal.</string>
+
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+
+    <string name="UI_validation_password_rules">Password must contain at least 8 characters</string>
+    <string name="UI_validation_invalid_email">Email format is invalid</string>
+    <string name="UI_validation_empty_email_password">Field Email and Password must be filled</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="history">History</string>
+    <string name="notification">Notification</string>
+    <string name="profile_user">Profile</string>
+    <string name="refresh">refresh</string>
+    <string name="loading">Loading</string>
+    <string name="menu_title_blank" translatable="false">" "</string>
+    <string name="const_lorem_ipsum" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+
+    <string name="UI_error_camera_take_photo">Failed take a picture</string>
+    <string name="image_contentDescription">image</string>
+    <string name="miles_per_hour">miles/hour</string>
+</resources>

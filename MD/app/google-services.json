@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "989484716642",
+    "firebase_url": "https://aispresso-6d0e5-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "aispresso-6d0e5",
+    "storage_bucket": "aispresso-6d0e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989484716642:android:02eafb12c02c9c94beb73b",
+        "android_client_info": {
+          "package_name": "com.bangkit.aispresso"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989484716642-4ldc6k8is0tfhkkdoqsn8lo2547168uv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5FxPSqpvNDRQO5EaIQUnRJl0HJPxlvt8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989484716642-4ldc6k8is0tfhkkdoqsn8lo2547168uv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
