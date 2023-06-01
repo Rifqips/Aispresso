@@ -16,15 +16,17 @@ import com.bangkit.aispresso.view.dashboard.history.HistoryFragment
 import com.bangkit.aispresso.view.dashboard.home.HomeFragment
 import com.bangkit.aispresso.view.dashboard.notification.NotificationFragment
 import com.bangkit.aispresso.view.dashboard.profile.ProfileFragment
+import com.bangkit.aispresso.view.dashboard.wheaterfragment.WheaterFragment
 
 class DashboardActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardBinding
 
     private val fragmentHome = HomeFragment()
-    private val fragmentHistory = HistoryFragment()
+    private val fragmentWheater = WheaterFragment()
     private val fragmentNotification = NotificationFragment()
     private val fragmentProfile = ProfileFragment()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,17 +36,17 @@ class DashboardActivity : AppCompatActivity() {
         loadFragment(fragmentHome)
 
         binding.fab.setOnClickListener {
-            val dialog = Constanta.dialogInfoOption(this, getString(R.string.UI_info_options_camera), Gravity.START)
+            val dialog = Constanta.dialogInfoOption(this, getString(R.string.UI_info_options_camera), Gravity.CENTER)
             val btnCoffe = dialog.findViewById<Button>(R.id.button_kopi)
             val btnLeaf = dialog.findViewById<Button>(R.id.button_daun)
-            val btnBack = dialog.findViewById<ImageView>(R.id.iv_back)
+            val ivBack = dialog.findViewById<ImageView>(R.id.iv_back)
             btnCoffe.setOnClickListener {
                 startActivity(Intent(this@DashboardActivity, CoffeActivity::class.java))
             }
             btnLeaf.setOnClickListener {
                 startActivity(Intent(this@DashboardActivity, LeafActivity::class.java))
             }
-            btnBack.setOnClickListener {
+            ivBack.setOnClickListener {
                 dialog.dismiss()
             }
             dialog.show()
@@ -54,8 +56,8 @@ class DashboardActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.menuHome ->
                     loadFragment(fragmentHome)
-                R.id.menuHistory ->
-                    loadFragment(fragmentHistory)
+                R.id.menuWheater ->
+                    loadFragment(fragmentWheater)
                 R.id.menuNotification ->
                     loadFragment(fragmentNotification)
                 R.id.menuProfile ->

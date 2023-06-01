@@ -36,6 +36,7 @@
     <string name="home">Home</string>
     <string name="history">History</string>
     <string name="notification">Notification</string>
+    <string name="wheater">wheater</string>
     <string name="profile_user">Profile</string>
     <string name="refresh">refresh</string>
     <string name="loading">Loading</string>

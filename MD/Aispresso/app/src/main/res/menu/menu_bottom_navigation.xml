@@ -8,9 +8,9 @@
         android:title="@string/home"/>
 
     <item
-        android:id="@+id/menuHistory"
-        android:icon="@drawable/ic_history"
-        android:title="@string/history"/>
+        android:id="@+id/menuWheater"
+        android:icon="@drawable/outline_cloud_24"
+        android:title="@string/wheater"/>
 
     <item
         android:id="@+id/navigation_blank"
@@ -19,7 +19,7 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/menuNotification"
+        android:id="@+id/menuz"
         android:icon="@drawable/ic_notif"
         android:title="@string/notification"/>
 

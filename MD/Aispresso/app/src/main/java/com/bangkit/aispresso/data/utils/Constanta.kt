@@ -25,6 +25,12 @@ object Constanta {
     val emailPattern = Regex("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")
 
 
+    const val APP_ID = "d6db25ca6801445f8b8222a5da9dfd62"
+    const val BASE_URL = "https://api.openweathermap.org/data/"
+    const val METRIC_UNIT = "metric"
+    const val PREFERENCE_NAME = "WeatherPreference"
+    const val WEATHER_RESPONSE_DATA = "weather_response_data"
+
     fun isNetworkAvailable(context: Context): Boolean {
         val connectivityManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
