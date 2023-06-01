@@ -16,6 +16,9 @@
         👉🏻 shutter button to take a picture using the camera \n
         👉🏻 switch button to rotate camera lens
     </string>
+    <string name="UI_info_options_camera">
+        Please select the processing option
+    </string>
 
     <string name="onboarding_slide3_title">Cari investor kamu </string>
     <string name="onboarding_slide3_subtitle">Di aispresso</string>

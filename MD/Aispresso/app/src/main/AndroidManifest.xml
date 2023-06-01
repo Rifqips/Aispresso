@@ -23,11 +23,17 @@
         android:theme="@style/Theme.Aispresso"
         tools:targetApi="31">
         <activity
+            android:name=".view.camera.leafprocessing.LeafActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.camera.coffeprocessing.CoffeActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.camera.CameraActivity"
             android:exported="false" />
         <activity
             android:name=".view.dashboard.DashboardActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".view.auth.UploadActivity"
             android:exported="false" />
@@ -45,7 +51,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 
