@@ -9,7 +9,6 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -19,12 +18,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.bangkit.aispresso.R
 import com.bangkit.aispresso.databinding.ActivityCoffeBinding
-import com.bangkit.aispresso.ml.BirdsModel
+import com.bangkit.aispresso.ml.ModelKopi
 import com.bangkit.aispresso.view.dashboard.DashboardActivity
+import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.image.TensorImage
+import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.io.IOException
 
 class CoffeActivity : AppCompatActivity() {
@@ -110,7 +111,8 @@ class CoffeActivity : AppCompatActivity() {
         registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap ->
             if (bitmap != null) {
                 imageView.setImageBitmap(bitmap)
-                outputGenerator(bitmap)
+//                outputGenerator(bitmap)
+                outputClasification(bitmap)
             }
         }
 
@@ -141,29 +143,44 @@ class CoffeActivity : AppCompatActivity() {
 
     private fun outputGenerator(bitmap: Bitmap) {
         //declaring tensorflow lite model veriable
-        val coffemodel = BirdsModel.newInstance(this)
+        val coffemodel = ModelKopi.newInstance(this)
 
         // Converting bitmap into tensorflow image
         val newBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true)
         val tfimage = TensorImage.fromBitmap(newBitmap)
 
-        // Process the image using trained model and sort it in descending order
         val outputs = coffemodel.process(tfimage)
-            .probabilityAsCategoryList.apply {
-                sortByDescending { it.score }
+            .probabilityAsTensorBuffer.apply {
+                DataType.STRING
             }
 
-        // Getting result having high probability
-        val highProbabilityOutput = outputs[0]
+        // Getting result having high probability on logcat
+        val highProbabilityOutput = outputs
 
         // Setting output text
-        outputTextView.text = highProbabilityOutput.label
+        outputTextView.text = highProbabilityOutput.buffer.toString()
         Log.i("TAG", "outputGenerator: $highProbabilityOutput")
-
 
         // Releases model resources if no longer used.
         coffemodel.close()
+
     }
+
+    private fun outputClasification(bitmap: Bitmap){
+        val model = ModelKopi.newInstance(this)
+
+    // Creates inputs for reference.
+        val image = TensorImage.fromBitmap(bitmap)
+
+    // Runs model inference and gets result.
+        val outputs = model.process(image)
+        val probability = outputs.probabilityAsTensorBuffer
+        outputTextView.text = probability.toString()
+
+    // Releases model resources if no longer used.
+        model.close()
+    }
+
 
     //to download to device
     private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()){
@@ -187,7 +204,7 @@ class CoffeActivity : AppCompatActivity() {
     //fun that takes a bitmap and store to user's device
     private fun downloadImage(mBitmap: Bitmap): Uri?{
         val contentValues = ContentValues().apply {
-            put(MediaStore.Images.Media.DISPLAY_NAME, "Birds_Images"+System.currentTimeMillis()/1000)
+            put(MediaStore.Images.Media.DISPLAY_NAME, "coffe_Images"+System.currentTimeMillis()/1000)
             put(MediaStore.Images.Media.MIME_TYPE, "image/png")
         }
         val uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
