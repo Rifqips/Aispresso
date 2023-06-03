@@ -111,8 +111,7 @@ class CoffeActivity : AppCompatActivity() {
         registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap ->
             if (bitmap != null) {
                 imageView.setImageBitmap(bitmap)
-//                outputGenerator(bitmap)
-                outputClasification(bitmap)
+                outputGenerator(bitmap)
             }
         }
 
@@ -150,37 +149,18 @@ class CoffeActivity : AppCompatActivity() {
         val tfimage = TensorImage.fromBitmap(newBitmap)
 
         val outputs = coffemodel.process(tfimage)
-            .probabilityAsTensorBuffer.apply {
-                DataType.STRING
-            }
 
         // Getting result having high probability on logcat
-        val highProbabilityOutput = outputs
+        val highProbabilityOutput = outputs.probabilityAsTensorBuffer
 
         // Setting output text
-        outputTextView.text = highProbabilityOutput.buffer.toString()
+        outputTextView.text = highProbabilityOutput.toString()
         Log.i("TAG", "outputGenerator: $highProbabilityOutput")
 
         // Releases model resources if no longer used.
         coffemodel.close()
 
     }
-
-    private fun outputClasification(bitmap: Bitmap){
-        val model = ModelKopi.newInstance(this)
-
-    // Creates inputs for reference.
-        val image = TensorImage.fromBitmap(bitmap)
-
-    // Runs model inference and gets result.
-        val outputs = model.process(image)
-        val probability = outputs.probabilityAsTensorBuffer
-        outputTextView.text = probability.toString()
-
-    // Releases model resources if no longer used.
-        model.close()
-    }
-
 
     //to download to device
     private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()){
