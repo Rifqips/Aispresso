@@ -3,6 +3,7 @@ package com.bangkit.aispresso.view.camera.coffeprocessing
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -21,6 +22,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bangkit.aispresso.databinding.ActivityCoffeBinding
+import com.bangkit.aispresso.ml.BirdsModel
 import com.bangkit.aispresso.ml.ModelKopi
 import com.bangkit.aispresso.view.dashboard.DashboardActivity
 import org.tensorflow.lite.DataType
@@ -36,6 +38,8 @@ class CoffeActivity : AppCompatActivity() {
     private lateinit var buttonBack: ImageView
     private lateinit var outputTextView: TextView
     private var GALLERY_REQUEST_CODE = 123
+
+    lateinit var bitmap_img: Bitmap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -140,25 +144,84 @@ class CoffeActivity : AppCompatActivity() {
         }
     }
 
+//    private fun outputGenerator(bitmap: Bitmap) {
+//        //declaring tensorflow lite model veriable
+//        val birdsmodel = BirdsModel.newInstance(this)
+//
+//        // Converting bitmap into tensorflow image
+//        val newBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true)
+//        val tfimage = TensorImage.fromBitmap(newBitmap)
+//
+//        // Process the image using trained model and sort it in descending order
+//        val outputs = birdsmodel.process(tfimage)
+//            .probabilityAsCategoryList.apply {
+//                sortByDescending { it.score }
+//            }
+//
+//        // Getting result having high probability
+//        val highProbabilityOutput = outputs[0]
+//
+//        // Setting output text
+//        outputTextView.text = highProbabilityOutput.label
+//        Log.i("TAG", "outputGenerator: $highProbabilityOutput")
+//
+//
+//        // Releases model resources if no longer used.
+//        birdsmodel.close()
+//    }
+
+//    private fun outputGenerator(bitmap: Bitmap) {
+//        //declaring tensorflow lite model veriable
+//        val coffemodel = ModelKopi.newInstance(this)
+//
+//        // Converting bitmap into tensorflow image
+//        val newBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true)
+//        val tfimage = TensorImage.fromBitmap(newBitmap)
+//
+//        val outputs = coffemodel.process(tfimage)
+//            .probabilityAsTensorBuffer.apply {
+//                dataType.name
+//            }
+//
+//        // Getting result having high probability on logcat
+//        val highProbabilityOutput = outputs.buffer
+//
+//        // Setting output text
+//        outputTextView.text = highProbabilityOutput.toString()
+//        Log.i("TAG", "outputGenerator: $highProbabilityOutput")
+//
+//        // Releases model resources if no longer used.
+//        coffemodel.close()
+//
+//    }
+
     private fun outputGenerator(bitmap: Bitmap) {
-        //declaring tensorflow lite model veriable
-        val coffemodel = ModelKopi.newInstance(this)
 
-        // Converting bitmap into tensorflow image
-        val newBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true)
-        val tfimage = TensorImage.fromBitmap(newBitmap)
+        //resize uploadedimage
+        var resized_bitmap_img: Bitmap = Bitmap.createScaledBitmap(bitmap, 32, 32,true)
 
-        val outputs = coffemodel.process(tfimage)
+        //paste the tflite model code here
+        try{
+            val model = ModelKopi.newInstance(this)
 
-        // Getting result having high probability on logcat
-        val highProbabilityOutput = outputs.probabilityAsTensorBuffer
+            // Creates inputs for reference.
+            val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 32, 32, 1), DataType.FLOAT32)
 
-        // Setting output text
-        outputTextView.text = highProbabilityOutput.toString()
-        Log.i("TAG", "outputGenerator: $highProbabilityOutput")
+            //create bytebuffer image from the resized bitmap
+            var byteBuffer= TensorImage.fromBitmap(resized_bitmap_img).buffer
+            inputFeature0.loadBuffer(byteBuffer)
 
-        // Releases model resources if no longer used.
-        coffemodel.close()
+            // Runs model inference and gets result.
+            val outputs = model.process(inputFeature0)
+            val outputFeature0 = outputs.probabilityAsTensorBuffer
+
+            outputTextView.text = outputFeature0.toString()
+
+            // Releases model resources if no longer used.
+            model.close()
+        }catch(e: Exception){
+            Log.d(TAG, "exception in using model for predictions: "+e)
+        }
 
     }
 
