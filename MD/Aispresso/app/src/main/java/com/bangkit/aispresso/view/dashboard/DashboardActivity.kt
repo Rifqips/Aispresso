@@ -10,10 +10,8 @@ import androidx.fragment.app.Fragment
 import com.bangkit.aispresso.R
 import com.bangkit.aispresso.data.utils.Constanta
 import com.bangkit.aispresso.databinding.ActivityDashboardBinding
-import com.bangkit.aispresso.view.camera.coffeprocessing.CoffeActivity
 import com.bangkit.aispresso.view.camera.coffeprocessing.CoffeClasifyActivity
 import com.bangkit.aispresso.view.camera.leafprocessing.LeafActivity
-import com.bangkit.aispresso.view.dashboard.history.HistoryFragment
 import com.bangkit.aispresso.view.dashboard.home.HomeFragment
 import com.bangkit.aispresso.view.dashboard.notification.NotificationFragment
 import com.bangkit.aispresso.view.dashboard.profile.ProfileFragment
