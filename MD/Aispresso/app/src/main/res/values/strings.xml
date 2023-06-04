@@ -54,5 +54,15 @@
     <string name="result">Result</string>
     <string name="click_on_the_result_text_to_search_on_google">Click on the result text to search on Google</string>
     <string name="place_holder">Place Holder</string>
+    <string name="delete">delete</string>
+
+
+    <string name="error_no_hardware">Aplikasi Membutuhkan FingerPrint</string>
+    <string name="error_hw_unavailable">Finger Print Tidak Bekerja</string>
+    <string name="error_none_enrolled">Tidak Ada Sidik Jari yang Terdaftar</string>
+    <string name="success">Otentikasi Berhasil</string>
+    <string name="title_biometric_prompt">Aispresso</string>
+    <string name="description_biometric_prompt">Gunakan Sidik Jari Untuk Masuk</string>
+
 
 </resources>

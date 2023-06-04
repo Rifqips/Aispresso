@@ -1,39 +1,133 @@
 package com.bangkit.aispresso.view.camera.coffeprocessing
 
 import android.Manifest
+import android.app.AlertDialog
+import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.media.ThumbnailUtils
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.bangkit.aispresso.R
+import com.bangkit.aispresso.data.model.history.coffe.ClassifyCoffeModel
+import com.bangkit.aispresso.data.sqlite.ClassifyHelper
+import com.bangkit.aispresso.data.sqlite.ClassifybaseRegsiter
+import com.bangkit.aispresso.data.utils.Helper.ALERT_DIALOG_CLOSE
+import com.bangkit.aispresso.data.utils.Helper.ALERT_DIALOG_DELETE
+import com.bangkit.aispresso.data.utils.Helper.EXTRA_POSITION
+import com.bangkit.aispresso.data.utils.Helper.EXTRA_REGISTRATION
+import com.bangkit.aispresso.data.utils.Helper.RESULT_ADD
+import com.bangkit.aispresso.data.utils.Helper.RESULT_DELETE
+import com.bangkit.aispresso.data.utils.Helper.RESULT_UPDATE
 import com.bangkit.aispresso.databinding.ActivityCoffeClasifyBinding
 import com.bangkit.aispresso.ml.Mlkopi
 import com.bangkit.aispresso.view.dashboard.DashboardActivity
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
+import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 
-class CoffeClasifyActivity : AppCompatActivity() {
+class CoffeClasifyActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding : ActivityCoffeClasifyBinding
 
     var imageSize = 224
+
+    private lateinit var classifyHelper: ClassifyHelper
+    private var imageView: ImageView? = null
+
+    private val RESULT_LOAD_IMAGE = 123
+    private val REQUEST_CODE_GALLERY = 999
+
+
+    private var isEdit = false
+    private var classify: ClassifyCoffeModel? = null
+    private var position: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCoffeClasifyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        classifyHelper = ClassifyHelper.getInstance(applicationContext)
+        classifyHelper.open()
+
+        classify = intent.getParcelableExtra(EXTRA_REGISTRATION)
+        if (classify != null){
+            position = intent.getIntExtra(EXTRA_POSITION, 0)
+            isEdit = true
+        } else {
+            classify = ClassifyCoffeModel()
+        }
+
+        val actionBarTitle: String
+        val btnTitle: String
+
+        if (isEdit){
+            actionBarTitle = "Ubah"
+            btnTitle = "Update"
+            classify?.let { it ->
+                binding.result.text = it.classified
+                binding.confidence.text = it.considers
+
+                val registerImage: ByteArray? = it.image
+                val bitmap =
+                    registerImage?.let { it1 -> BitmapFactory.decodeByteArray(registerImage, 0, it1.size) }
+                binding.imageView.setImageBitmap(bitmap)
+            }!!
+        } else {
+            actionBarTitle = "Tambah"
+            btnTitle = "Simpan"
+        }
+
+
+        actionBar?.title = actionBarTitle
+        binding.save.text = btnTitle
+        binding.save.setOnClickListener(this)
+
+        imageView = binding.imageView
+
+        imageView!!.setOnClickListener {
+
+            ActivityCompat.requestPermissions(
+                this@CoffeClasifyActivity, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE
+
+                ),
+                REQUEST_CODE_GALLERY
+            )
+        }
+
+        binding.result.setOnEditorActionListener { v, actionId, event ->
+            classify?.let { it ->
+                it.classified = v.text.toString()
+            }
+            false
+        }
+
+        binding.confidence.setOnEditorActionListener { v, actionId, event ->
+            classify?.let { it ->
+                it.considers = v.text.toString()
+            }
+            false
+        }
 
         binding.ivBack.setOnClickListener {
             startActivity(Intent(this, DashboardActivity::class.java))
         }
+
         binding.button.setOnClickListener{
             // Launch camera if we have permission
             if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
@@ -44,7 +138,60 @@ class CoffeClasifyActivity : AppCompatActivity() {
                 requestPermissions(arrayOf(Manifest.permission.CAMERA), 100)
             }
         }
+    }
 
+    private fun showAlertDialog(type: Int) {
+        val isDialogClose = type == ALERT_DIALOG_CLOSE
+        val dialogTitle: String
+        val dialogMessage: String
+        if (isDialogClose) {
+            dialogTitle = "Batal"
+            dialogMessage = "Apakah anda ingin membatalkan perubahan pada form?"
+        } else {
+            dialogMessage = "Apakah anda yakin ingin menghapus item ini?"
+            dialogTitle = "Hapus Register"
+        }
+        val alertDialogBuilder = AlertDialog.Builder(this)
+        alertDialogBuilder.setTitle(dialogTitle)
+        alertDialogBuilder
+            .setMessage(dialogMessage)
+            .setCancelable(false)
+            .setPositiveButton("Ya") { _, _ ->
+                if (isDialogClose) {
+                    finish()
+                } else {
+                    val result = classifyHelper.deleteById(classify?.id.toString()).toLong()
+                    if (result > 0) {
+                        val intent = Intent()
+                        intent.putExtra(EXTRA_POSITION, position)
+                        setResult(RESULT_DELETE, intent)
+                        finish()
+                    } else {
+                        Toast.makeText(
+                            this@CoffeClasifyActivity,
+                            "Gagal menghapus data",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+            .setNegativeButton("Tidak") { dialog, _ -> dialog.cancel() }
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        if(isEdit) {
+            menuInflater.inflate(R.menu.menu_form, menu)
+        }
+        return super.onCreateOptionsMenu(menu)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_delete -> showAlertDialog(ALERT_DIALOG_DELETE)
+            android.R.id.home -> showAlertDialog(ALERT_DIALOG_CLOSE)
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     fun classifyImage(image: Bitmap?) {
@@ -113,5 +260,63 @@ class CoffeClasifyActivity : AppCompatActivity() {
             classifyImage(image)
         }
         super.onActivityResult(requestCode, resultCode, data)
+    }
+    private fun imageViewToByte(image: ImageView): ByteArray? {
+        val bitmap = (image.drawable as BitmapDrawable).bitmap
+        val stream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream)
+        return stream.toByteArray()
+    }
+    override fun onClick(v: View?) {
+
+        if(v?.id == R.id.save) {
+
+            val classified = binding.result.text.toString().trim()
+            val consider = binding.confidence.text.toString().trim()
+
+            classify?.classified = classified
+            classify?.considers = consider
+            classify?.image = imageViewToByte(binding.imageView)
+
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.putExtra(EXTRA_REGISTRATION, classify)
+            intent.putExtra(EXTRA_POSITION, position)
+            val values = ContentValues()
+            values.put(ClassifybaseRegsiter.ClassifyColumns.CLASSIFIED, classify?.classified)
+            values.put(ClassifybaseRegsiter.ClassifyColumns.CONSIDER, classify?.considers)
+            values.put(ClassifybaseRegsiter.ClassifyColumns.IMAGE, classify?.image)
+
+            if(isEdit) {
+                val result = classifyHelper.update(
+                    classify?.id.toString(),
+                    values
+                ).toLong()
+                if (result > 0) {
+                    setResult(RESULT_UPDATE, intent)
+                    finish()
+                } else {
+                    Toast.makeText(this, "Gagal mengupdate data", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                val result = classifyHelper.insert(values)
+                if (result > 0) {
+                    classify?.id = result.toInt()
+                    setResult(RESULT_ADD, intent)
+                    Log.d("sukses add", "$result")
+                    Toast.makeText(
+                        this@CoffeClasifyActivity,
+                        "Sukses menambah data",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    finish()
+                } else {
+                    Toast.makeText(
+                        this@CoffeClasifyActivity,
+                        "Gagal menambah data",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
     }
 }

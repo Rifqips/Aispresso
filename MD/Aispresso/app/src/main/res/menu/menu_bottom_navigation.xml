@@ -19,7 +19,7 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/menuz"
+        android:id="@+id/menuNotification"
         android:icon="@drawable/ic_notif"
         android:title="@string/notification"/>
 

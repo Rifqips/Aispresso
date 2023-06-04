@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.bangkit.aispresso.data.model.user.User
+import com.bangkit.aispresso.data.model.notification.user.User
 import com.bangkit.aispresso.data.storage.PreferencesClass
 import com.bangkit.aispresso.databinding.FragmentLoginBinding
 import com.bangkit.aispresso.view.dashboard.DashboardActivity

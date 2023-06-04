@@ -12,6 +12,7 @@ import com.bangkit.aispresso.data.utils.Constanta
 import com.bangkit.aispresso.databinding.ActivityDashboardBinding
 import com.bangkit.aispresso.view.camera.coffeprocessing.CoffeClasifyActivity
 import com.bangkit.aispresso.view.camera.leafprocessing.LeafActivity
+import com.bangkit.aispresso.view.dashboard.history.HistoryFragment
 import com.bangkit.aispresso.view.dashboard.home.HomeFragment
 import com.bangkit.aispresso.view.dashboard.notification.NotificationFragment
 import com.bangkit.aispresso.view.dashboard.profile.ProfileFragment
@@ -41,9 +42,11 @@ class DashboardActivity : AppCompatActivity() {
             val ivBack = dialog.findViewById<ImageView>(R.id.iv_back)
             btnCoffe.setOnClickListener {
                 startActivity(Intent(this@DashboardActivity, CoffeClasifyActivity::class.java))
+                dialog.dismiss()
             }
             btnLeaf.setOnClickListener {
                 startActivity(Intent(this@DashboardActivity, LeafActivity::class.java))
+                dialog.dismiss()
             }
             ivBack.setOnClickListener {
                 dialog.dismiss()

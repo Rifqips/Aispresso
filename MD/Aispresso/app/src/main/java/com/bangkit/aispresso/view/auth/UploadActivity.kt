@@ -10,7 +10,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isGone
-import com.bangkit.aispresso.data.model.user.User
+import com.bangkit.aispresso.data.model.notification.user.User
 import com.bangkit.aispresso.data.storage.PreferencesClass
 import com.bangkit.aispresso.databinding.ActivityUploadBinding
 import com.bangkit.aispresso.view.dashboard.DashboardActivity

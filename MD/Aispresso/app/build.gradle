@@ -92,4 +92,7 @@ dependencies {
     //tensorflow dependency
     implementation 'org.tensorflow:tensorflow-lite-support:0.1.0'
     implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0'
+
+    //biometric
+    implementation 'androidx.biometric:biometric:1.0.1'
 }
