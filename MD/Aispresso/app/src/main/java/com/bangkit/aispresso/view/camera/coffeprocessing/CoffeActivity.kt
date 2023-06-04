@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bangkit.aispresso.databinding.ActivityCoffeBinding
 import com.bangkit.aispresso.ml.BirdsModel
+import com.bangkit.aispresso.ml.Mlkopi
 import com.bangkit.aispresso.ml.ModelKopi
 import com.bangkit.aispresso.view.dashboard.DashboardActivity
 import org.tensorflow.lite.DataType
@@ -50,6 +51,9 @@ class CoffeActivity : AppCompatActivity() {
         imageView = binding.imageView
         button = binding.bntCaptureImage
         buttonBack = binding.ivBack
+
+
+
 
         buttonBack.setOnClickListener {
             startActivity(Intent(this@CoffeActivity, DashboardActivity::class.java))
@@ -114,8 +118,8 @@ class CoffeActivity : AppCompatActivity() {
     private val takePicturePreview =
         registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap ->
             if (bitmap != null) {
-                imageView.setImageBitmap(bitmap)
-                outputGenerator(bitmap)
+                imageView.setImageBitmap(bitmap_img)
+                outputGenerator(bitmap_img)
             }
         }
 
@@ -134,8 +138,8 @@ class CoffeActivity : AppCompatActivity() {
                         Log.i("TAG", "onResultRecived: $uri")
                         val bitmap =
                             BitmapFactory.decodeStream(contentResolver.openInputStream(uri))
-                        imageView.setImageBitmap(bitmap)
-                        outputGenerator(bitmap)
+                        imageView.setImageBitmap(bitmap_img)
+                        outputGenerator(bitmap_img)
                     }
                 } else {
                     Log.e("TAG", "onActivityResult: error in selecting image")
@@ -171,7 +175,7 @@ class CoffeActivity : AppCompatActivity() {
 //    }
 
 //    private fun outputGenerator(bitmap: Bitmap) {
-//        //declaring tensorflow lite model veriable
+        //declaring tensorflow lite model veriable
 //        val coffemodel = ModelKopi.newInstance(this)
 //
 //        // Converting bitmap into tensorflow image
@@ -179,33 +183,30 @@ class CoffeActivity : AppCompatActivity() {
 //        val tfimage = TensorImage.fromBitmap(newBitmap)
 //
 //        val outputs = coffemodel.process(tfimage)
-//            .probabilityAsTensorBuffer.apply {
-//                dataType.name
-//            }
 //
 //        // Getting result having high probability on logcat
-//        val highProbabilityOutput = outputs.buffer
+//        val highProbabilityOutput = outputs.probabilityAsTensorBuffer
 //
 //        // Setting output text
 //        outputTextView.text = highProbabilityOutput.toString()
 //        Log.i("TAG", "outputGenerator: $highProbabilityOutput")
 //
 //        // Releases model resources if no longer used.
-//        coffemodel.close()
-//
+//        coffemodel.close
+
 //    }
 
     private fun outputGenerator(bitmap: Bitmap) {
 
         //resize uploadedimage
-        var resized_bitmap_img: Bitmap = Bitmap.createScaledBitmap(bitmap, 32, 32,true)
+        var resized_bitmap_img: Bitmap = Bitmap.createScaledBitmap(bitmap_img, 224, 224,true)
 
         //paste the tflite model code here
         try{
-            val model = ModelKopi.newInstance(this)
+            val model = Mlkopi.newInstance(this)
 
-            // Creates inputs for reference.
-            val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 32, 32, 1), DataType.FLOAT32)
+        // Creates inputs for reference.
+            val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 224, 224, 3), DataType.FLOAT32)
 
             //create bytebuffer image from the resized bitmap
             var byteBuffer= TensorImage.fromBitmap(resized_bitmap_img).buffer
@@ -213,8 +214,9 @@ class CoffeActivity : AppCompatActivity() {
 
             // Runs model inference and gets result.
             val outputs = model.process(inputFeature0)
-            val outputFeature0 = outputs.probabilityAsTensorBuffer
+            val outputFeature0 = outputs.outputFeature0AsTensorBuffer
 
+            Log.i("TAG", "outputGenerator: $outputFeature0")
             outputTextView.text = outputFeature0.toString()
 
             // Releases model resources if no longer used.
@@ -254,7 +256,7 @@ class CoffeActivity : AppCompatActivity() {
         if (uri!=null){
             contentResolver.insert(uri, contentValues)?.also {
                 contentResolver.openOutputStream(it).use { outputStream->
-                    if (!mBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)){
+                    if (!bitmap_img.compress(Bitmap.CompressFormat.PNG, 100, outputStream)){
                         throw IOException("Could'nt save the bitmap")
                     }else{
                         Toast.makeText(applicationContext, "Image Saved", Toast.LENGTH_LONG).show()
