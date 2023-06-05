@@ -25,6 +25,12 @@ object Constanta {
     val emailPattern = Regex("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")
 
 
+    const val APP_ID = "d6db25ca6801445f8b8222a5da9dfd62"
+    const val BASE_URL = "https://api.openweathermap.org/data/"
+    const val METRIC_UNIT = "metric"
+    const val PREFERENCE_NAME = "WeatherPreference"
+    const val WEATHER_RESPONSE_DATA = "weather_response_data"
+
     fun isNetworkAvailable(context: Context): Boolean {
         val connectivityManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -55,6 +61,33 @@ object Constanta {
         ) mediaDir else application.filesDir
 
         return File(outputDirectory, "$timeStamp.jpg")
+    }
+
+    // custom dialog info builder -> reuse to another invocation with custom ok button action
+    fun dialogInfoOption(
+        context: Context,
+        message: String,
+        alignment: Int = Gravity.CENTER
+    ): Dialog {
+        val dialog = Dialog(context)
+        dialog.setCancelable(false)
+        dialog.window!!.apply {
+            val params: WindowManager.LayoutParams = this.attributes
+            params.width = WindowManager.LayoutParams.MATCH_PARENT
+            params.height = WindowManager.LayoutParams.WRAP_CONTENT
+            attributes.windowAnimations = android.R.transition.fade
+            setGravity(Gravity.CENTER)
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        }
+        dialog.setContentView(R.layout.custom_dialog_options)
+        val tvMessage = dialog.findViewById<TextView>(R.id.message)
+        when (alignment) {
+            Gravity.CENTER -> tvMessage.gravity = Gravity.CENTER_VERTICAL or Gravity.CENTER
+            Gravity.START -> tvMessage.gravity = Gravity.CENTER_VERTICAL or Gravity.START
+            Gravity.END -> tvMessage.gravity = Gravity.CENTER_VERTICAL or Gravity.END
+        }
+        tvMessage.text = message
+        return dialog
     }
 
     // custom dialog info builder -> reuse to another invocation with custom ok button action
@@ -97,6 +130,7 @@ object Constanta {
         }
         dialog.show()
     }
+
     fun uriToFile(selectedImg: Uri, context: Context): File {
         val contentResolver: ContentResolver = context.contentResolver
         val myFile = createCustomTempFile(context)

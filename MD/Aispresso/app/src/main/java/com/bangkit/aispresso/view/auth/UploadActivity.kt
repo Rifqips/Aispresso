@@ -10,11 +10,10 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isGone
-import com.bangkit.aispresso.data.model.User
+import com.bangkit.aispresso.data.model.notification.user.User
 import com.bangkit.aispresso.data.storage.PreferencesClass
 import com.bangkit.aispresso.databinding.ActivityUploadBinding
 import com.bangkit.aispresso.view.dashboard.DashboardActivity
-import com.bangkit.aispresso.view.onboarding.OnboardingActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.gms.cast.framework.media.ImagePicker

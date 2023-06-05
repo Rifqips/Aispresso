@@ -24,7 +24,36 @@
         android:src="@drawable/ic_logo"
         app:layout_constraintTop_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
+<<<<<<< HEAD
         app:layout_constraintStart_toStartOf="parent"/>
+=======
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/label_greet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-light"
+            android:text="Welcome to"
+            android:textColor="@color/secondary_color"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/label_appName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/label_greet"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="@string/app_name"
+            android:fontFamily="sans-serif-black"
+            android:textColor="@color/secondary_color"
+            android:textSize="25sp" />
+
+    </RelativeLayout>
+>>>>>>> room-presitance
 
 
     <TextView
@@ -80,12 +109,16 @@
         android:layout_height="65dp"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="16dp"
+<<<<<<< HEAD
         android:text="@string/login"
+=======
+>>>>>>> room-presitance
         android:backgroundTint="@color/secondary_color"
         android:textAllCaps="false"
         android:textSize="16sp"
         android:transitionName="action"
         app:backgroundTint="@null"
+        android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_password" />
