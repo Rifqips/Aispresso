@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">Aispresso</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="onboarding_slide1_title">Konsultasi </string>
-    <string name="onboarding_slide1_subtitle">Perkebunan kopi </string>
-    <string name="onboarding_slide1_desc">Rasakan pengalaman yang berbeda mengenai konsultasi online perkebunan kopi.</string>
+    <string name="onboarding_slide1_title">Cek kualitas</string>
+    <string name="onboarding_slide1_subtitle">biji kopi</string>
+    <string name="onboarding_slide1_desc">Kamu bisa mengecek kualitas biji kopi kamu.</string>
 
-    <string name="onboarding_slide2_title">Cek kualitas kopi</string>
-    <string name="onboarding_slide2_subtitle">Kamu di aispresso</string>
-    <string name="onboarding_slide2_desc">Keajaiban kopi dalam setiap biji yang tumbuh.</string>
+    <string name="onboarding_slide2_title">Cek penyakit</string>
+    <string name="onboarding_slide2_subtitle">daun tanaman</string>
+    <string name="onboarding_slide2_desc">Kamu juga bisa mengetahui penyakit tanamanmu.</string>
     <string name="UI_info_camera">
         Here is an explanation of some of the buttons : \n
         👉🏻 back button to return to previous page \n
@@ -42,4 +42,5 @@
     <string name="UI_error_camera_take_photo">Failed take a picture</string>
     <string name="image_contentDescription">image</string>
     <string name="miles_per_hour">miles/hour</string>
+    <string name="get_started">Get Started</string>
 </resources>
