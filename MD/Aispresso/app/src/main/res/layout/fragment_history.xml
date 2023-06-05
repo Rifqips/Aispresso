@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary_color"
-    tools:context=".view.dashboard.history.HistoryFragment">>
+    tools:context=".view.dashboard.history.HistoryFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constlabel"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-        
+
 
         <TextView
             android:id="@+id/tvHistory"
