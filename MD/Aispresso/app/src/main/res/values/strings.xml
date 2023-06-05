@@ -42,11 +42,9 @@
     <string name="loading">Loading</string>
     <string name="menu_title_blank" translatable="false">" "</string>
     <string name="const_lorem_ipsum" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
-
     <string name="UI_error_camera_take_photo">Failed take a picture</string>
     <string name="image_contentDescription">image</string>
     <string name="miles_per_hour">miles/hour</string>
-<<<<<<< HEAD
     <string name="get_started">Get Started</string>
     <string name="login">Login</string>
     <string name="email">Email</string>
@@ -56,9 +54,6 @@
     <string name="your_name">name</string>
     <string name="phone_number">phone</string>
     <string name="already_have_an_account">Already have an account?</string>
-=======
-
-
     <string name="load_image">Load Image</string>
     <string name="take_image">Take Image</string>
     <string name="output">Output:</string>
@@ -66,15 +61,10 @@
     <string name="click_on_the_result_text_to_search_on_google">Click on the result text to search on Google</string>
     <string name="place_holder">Place Holder</string>
     <string name="delete">delete</string>
-
-
     <string name="error_no_hardware">Aplikasi Membutuhkan FingerPrint</string>
     <string name="error_hw_unavailable">Finger Print Tidak Bekerja</string>
     <string name="error_none_enrolled">Tidak Ada Sidik Jari yang Terdaftar</string>
     <string name="success">Otentikasi Berhasil</string>
     <string name="title_biometric_prompt">Aispresso</string>
     <string name="description_biometric_prompt">Gunakan Sidik Jari Untuk Masuk</string>
-
-
->>>>>>> room-presitance
 </resources>
