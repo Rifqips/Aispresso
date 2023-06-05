@@ -24,7 +24,7 @@ class DashboardActivity : AppCompatActivity() {
 
     private val fragmentHome = HomeFragment()
     private val fragmentWheater = WheaterFragment()
-    private val fragmentNotification = NotificationFragment()
+    private val fragmentHistory = HistoryFragment()
     private val fragmentProfile = ProfileFragment()
 
 
@@ -60,8 +60,8 @@ class DashboardActivity : AppCompatActivity() {
                     loadFragment(fragmentHome)
                 R.id.menuWheater ->
                     loadFragment(fragmentWheater)
-                R.id.menuNotification ->
-                    loadFragment(fragmentNotification)
+                R.id.menuHistory ->
+                    loadFragment(fragmentHistory)
                 R.id.menuProfile ->
                     loadFragment(fragmentProfile)
             }

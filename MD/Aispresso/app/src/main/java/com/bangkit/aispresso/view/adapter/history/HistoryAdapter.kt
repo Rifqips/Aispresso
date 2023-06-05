@@ -11,9 +11,9 @@ import com.bangkit.aispresso.data.model.history.coffe.ClassifyCoffeModel
 import com.bangkit.aispresso.databinding.RcItemBinding
 
 
-class HistoryAdapter(private val activity: Activity) :
+class HistoryAdapter() :
     RecyclerView.Adapter<HistoryAdapter.RegisterViewHolder>() {
-    var listRegister = ArrayList<ClassifyCoffeModel>()
+    var listHistory = ArrayList<ClassifyCoffeModel>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -25,12 +25,12 @@ class HistoryAdapter(private val activity: Activity) :
     }
 
     override fun onBindViewHolder(holder: HistoryAdapter.RegisterViewHolder, position: Int) {
-        holder.bind(listRegister[position])
+        holder.bind(listHistory[position])
 
 
     }
 
-    override fun getItemCount(): Int = this.listRegister.size
+    override fun getItemCount(): Int = this.listHistory.size
 
 
     fun createLoopId(position: Int): String {
@@ -59,19 +59,19 @@ class HistoryAdapter(private val activity: Activity) :
 
 
     fun addItem(registerModel: ClassifyCoffeModel) {
-        this.listRegister.add(registerModel)
-        notifyItemInserted(this.listRegister.size - 1)
+        this.listHistory.add(registerModel)
+        notifyItemInserted(this.listHistory.size - 1)
     }
 
     fun updateItem(position: Int, registerModel: ClassifyCoffeModel) {
-        this.listRegister[position] = registerModel
+        this.listHistory[position] = registerModel
         notifyItemChanged(position, registerModel)
     }
 
     fun removeItem(position: Int) {
-        this.listRegister.removeAt(position)
+        this.listHistory.removeAt(position)
         notifyItemRemoved(position)
-        notifyItemRangeChanged(position, this.listRegister.size)
+        notifyItemRangeChanged(position, this.listHistory.size)
 
     }
 }
