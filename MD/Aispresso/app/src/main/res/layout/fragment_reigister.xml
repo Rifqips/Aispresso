@@ -14,43 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="100dp" />
-
-    <RelativeLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView">
-
-
-        <TextView
-            android:id="@+id/label_greet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:fontFamily="sans-serif-light"
-            android:text="Hi welcome to"
-            android:textColor="@color/secondary_color"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/label_appName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/label_greet"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
-            android:fontFamily="sans-serif-black"
-            android:text="@string/app_name"
-            android:textColor="@color/secondary_color"
-            android:textSize="25sp" />
-
-    </RelativeLayout>
-
+        app:layout_constraintGuide_begin="150dp" />
 
     <TextView
         android:id="@+id/label_auth"
@@ -58,13 +22,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
-        android:text="Register"
+        android:text="@string/register"
         android:textColor="@color/secondary_color"
         android:textSize="20sp"
         android:textStyle="bold"
         android:transitionName="auth"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/container" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <com.bangkit.aispresso.view.customview.EditTextClear
         android:id="@+id/ed_name"
@@ -72,10 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/custom_form_input"
-        android:hint="Your Name"
-        android:textColorHint="@color/secondary_color"
-        android:textColor="@color/secondary_color"
+        android:hint="@string/your_name"
         android:inputType="textEmailAddress"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
@@ -90,11 +51,8 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/custom_form_input"
-        android:hint="Your Email"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:textColorHint="@color/secondary_color"
-        android:textColor="@color/secondary_color"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
         android:transitionName="email"
@@ -109,11 +67,7 @@
         android:layout_marginHorizontal="32dp"
         android:layout_marginVertical="15dp"
         android:layout_marginTop="12dp"
-        android:background="@drawable/custom_form_input"
-        android:hint="Your Phone"
-        android:textColorHint="@color/secondary_color"
-        android:textColor="@color/secondary_color"
-        android:fontFamily="@font/poppins_medium"
+        android:hint="@string/phone_number"
         android:inputType="textPassword"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
@@ -129,10 +83,7 @@
         android:layout_marginHorizontal="32dp"
         android:layout_marginVertical="15dp"
         android:layout_marginTop="12dp"
-        android:background="@drawable/custom_form_input"
-        android:hint="Password"
-        android:textColorHint="@color/secondary_color"
-        android:textColor="@color/secondary_color"
+        android:hint="@string/password"
         android:inputType="textPassword"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
@@ -148,7 +99,7 @@
         android:layout_height="65dp"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="16dp"
-        android:text="Register"
+        android:text="@string/register"
         android:backgroundTint="@color/secondary_color"
         android:textAllCaps="false"
         android:textSize="16sp"
@@ -173,7 +124,7 @@
             android:id="@+id/label_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Already have an account?"
+            android:text="@string/already_have_an_account"
             android:textColor="@color/secondary_color" />
 
         <TextView
@@ -181,7 +132,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Login"
+            android:text="@string/login"
             android:textColor="@color/secondary_color"
             android:textStyle="bold" />
     </LinearLayout>

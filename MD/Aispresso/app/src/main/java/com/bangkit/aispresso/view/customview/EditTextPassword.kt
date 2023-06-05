@@ -51,11 +51,11 @@ class EditTextPassword : AppCompatEditText {
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        hint = "Your Password"
+        hint = "password"
         context.apply {
             background = ContextCompat.getDrawable(this, R.drawable.custom_form_input)
             setTextColor(ContextCompat.getColor(this, R.color.secondary_color))
-            setHintTextColor(ContextCompat.getColor(this, R.color.secondary_color))
+            setHintTextColor(ContextCompat.getColor(this, R.color.gray))
         }
         maxLines = 1
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START

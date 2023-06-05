@@ -43,4 +43,12 @@
     <string name="image_contentDescription">image</string>
     <string name="miles_per_hour">miles/hour</string>
     <string name="get_started">Get Started</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="don_t_have_an_account">don\'t have an account?</string>
+    <string name="register">Register</string>
+    <string name="your_name">name</string>
+    <string name="phone_number">phone</string>
+    <string name="already_have_an_account">Already have an account?</string>
 </resources>

@@ -52,10 +52,11 @@ class EditTextEmail : AppCompatEditText {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+        hint = "email"
         context.apply {
             background = ContextCompat.getDrawable(this, R.drawable.custom_form_input)
             setTextColor(ContextCompat.getColor(this, R.color.secondary_color))
-            setHintTextColor(ContextCompat.getColor(this, R.color.secondary_color))
+            setHintTextColor(ContextCompat.getColor(this, R.color.gray))
         }
         isSingleLine = true
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START

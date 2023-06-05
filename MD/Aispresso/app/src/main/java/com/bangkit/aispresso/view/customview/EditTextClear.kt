@@ -119,8 +119,8 @@ class EditTextClear : AppCompatEditText, View.OnTouchListener {
         super.onDraw(canvas)
         context.apply {
             background = ContextCompat.getDrawable(this, R.drawable.custom_form_input)
-            setTextColor(ContextCompat.getColor(this, R.color.black))
-            setHintTextColor(ContextCompat.getColor(this, R.color.black))
+            setTextColor(ContextCompat.getColor(this, R.color.secondary_color))
+            setHintTextColor(ContextCompat.getColor(this, R.color.gray))
         }
         isSingleLine = true
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START

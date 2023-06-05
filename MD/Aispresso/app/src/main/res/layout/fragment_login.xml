@@ -14,41 +14,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="200dp" />
+        app:layout_constraintGuide_begin="150dp" />
 
-    <RelativeLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="222dp"
+        android:layout_height="155dp"
         android:orientation="vertical"
+        android:src="@drawable/ic_logo"
         app:layout_constraintTop_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <TextView
-            android:id="@+id/label_greet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:fontFamily="sans-serif-light"
-            android:text="Welcome to"
-            android:textColor="@color/secondary_color"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/label_appName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/label_greet"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
-            android:fontFamily="sans-serif-black"
-            android:text="@string/app_name"
-            android:textColor="@color/secondary_color"
-            android:textSize="25sp" />
-
-    </RelativeLayout>
+        app:layout_constraintStart_toStartOf="parent"/>
 
 
     <TextView
@@ -57,13 +33,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
-        android:text="Login"
+        android:text="@string/login"
         android:textColor="@color/secondary_color"
         android:textSize="20sp"
         android:textStyle="bold"
         android:transitionName="auth"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/container" />
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <com.bangkit.aispresso.view.customview.EditTextEmail
         android:id="@+id/ed_email"
@@ -71,10 +47,6 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/custom_form_input"
-        android:hint="Email"
-        android:textColorHint="@color/secondary_color"
-        android:textColor="@color/secondary_color"
         android:inputType="textEmailAddress"
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
@@ -90,9 +62,8 @@
         android:layout_marginHorizontal="32dp"
         android:layout_marginVertical="15dp"
         android:layout_marginTop="12dp"
-        android:background="@drawable/custom_form_input"
-        android:hint="Password"
-        android:textColorHint="@color/secondary_color"
+        android:hint="@string/password"
+        android:textColorHint="@color/gray"
         android:textColor="@color/secondary_color"
         android:inputType="textPassword"
         android:paddingHorizontal="20dp"
@@ -109,7 +80,7 @@
         android:layout_height="65dp"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="16dp"
-        android:text="Login"
+        android:text="@string/login"
         android:backgroundTint="@color/secondary_color"
         android:textAllCaps="false"
         android:textSize="16sp"
@@ -134,7 +105,7 @@
             android:id="@+id/label_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="don't have an account?"
+            android:text="@string/don_t_have_an_account"
             android:textColor="@color/secondary_color" />
 
         <TextView
@@ -142,7 +113,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Register "
+            android:text="@string/register"
             android:textColor="@color/secondary_color"
             android:textStyle="bold" />
 
