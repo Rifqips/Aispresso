@@ -67,4 +67,13 @@
     <string name="success">Otentikasi Berhasil</string>
     <string name="title_biometric_prompt">Aispresso</string>
     <string name="description_biometric_prompt">Gunakan Sidik Jari Untuk Masuk</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="username">Username</string>
+    <string name="explore">Explore our features!</string>
+    <string name="investor">Investor</string>
+    <string name="consultation">Consultation</string>
+    <string name="forum">Forum</string>
+    <string name="chat">Chat</string>
+    <string name="articles">Articles</string>
+    <string name="view_all">View All</string>
 </resources>

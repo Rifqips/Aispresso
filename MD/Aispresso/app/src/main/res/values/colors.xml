@@ -13,5 +13,7 @@
     <color name="gray">#8E8E8E</color>
     <color name="alert_text">#F7914D</color>
     <color name="secondary_color">#483117</color>
-    <color name="third_color">#C5BF5C</color>
+    <color name="third_color">#B17946</color>
+    <color name="fourth_color">#C5BF5C</color>
+
 </resources>
