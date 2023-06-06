@@ -36,7 +36,7 @@
     <string name="home">Home</string>
     <string name="history">History</string>
     <string name="notification">Notification</string>
-    <string name="wheater">wheater</string>
+    <string name="wheater">Weather</string>
     <string name="profile_user">Profile</string>
     <string name="refresh">refresh</string>
     <string name="loading">Loading</string>
@@ -76,4 +76,5 @@
     <string name="chat">Chat</string>
     <string name="articles">Articles</string>
     <string name="view_all">View All</string>
+    <string name="temperature">Temperature</string>
 </resources>
