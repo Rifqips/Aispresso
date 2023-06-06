@@ -37,7 +37,7 @@ class ClassifyHelper(context: Context) {
             null,
             null,
             null,
-            "$ID ASC"
+            "$ID DESC"
         )
     }
 
