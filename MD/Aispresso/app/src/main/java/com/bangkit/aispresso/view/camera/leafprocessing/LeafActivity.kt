@@ -25,7 +25,7 @@ import com.bangkit.aispresso.data.sqlite.ClassifyHelper
 import com.bangkit.aispresso.data.sqlite.ClassifybaseRegsiter
 import com.bangkit.aispresso.data.utils.Helper
 import com.bangkit.aispresso.databinding.ActivityCoffeClasifyBinding
-import com.bangkit.aispresso.databinding.ActivityLeafBinding
+import com.bangkit.aispresso.databinding.ActivityLeafClasifyBinding
 import com.bangkit.aispresso.ml.Mlkopi
 import com.bangkit.aispresso.ml.Modeltanaman
 import com.bangkit.aispresso.view.dashboard.DashboardActivity
@@ -38,7 +38,7 @@ import java.nio.ByteOrder
 
 class LeafActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var binding : ActivityLeafBinding
+    private lateinit var binding : ActivityLeafClasifyBinding
 
     var imageSize = 224
 
@@ -55,7 +55,7 @@ class LeafActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLeafBinding.inflate(layoutInflater)
+        binding = ActivityLeafClasifyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         classifyHelper = ClassifyHelper.getInstance(applicationContext)

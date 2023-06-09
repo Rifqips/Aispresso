@@ -77,5 +77,15 @@
     <string name="articles">Articles</string>
     <string name="view_all">View All</string>
     <string name="temperature">Temperature</string>
-    <string name="classified_as">classified as</string>
+    <string name="classified_as">Classified as:</string>
+    <string name="leaf">Leaf</string>
+    <string name="coffe">Coffe</string>
+    <string name="coffe_classify">Coffe Classify</string>
+    <string name="confidences">Confidences:</string>
+    <string name="save">Save</string>
+    <string name="take_picture">Take Picture</string>
+    <string name="empty">(empty)</string>
+    <string name="leaf_classify">Leaf Classify</string>
+    <string name="upload_image">Upload Image</string>
+    <string name="ok">Ok</string>
 </resources>
