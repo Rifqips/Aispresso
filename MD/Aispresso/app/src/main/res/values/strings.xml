@@ -88,4 +88,6 @@
     <string name="leaf_classify">Leaf Classify</string>
     <string name="upload_image">Upload Image</string>
     <string name="ok">Ok</string>
+    <string name="counsultant_recommendation">Counsultant Recommendation</string>
+    <string name="counsultant">Counsultant</string>
 </resources>
