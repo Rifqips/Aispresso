@@ -25,6 +25,16 @@
         <item name="textAllCaps">false</item>
     </style>
 
+    <style name="invisbutton">
+        <item name="backgroundTint">@color/gray_button</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="cornerRadius">10dp</item>
+        <item name="android:state_pressed">false</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
     <style name="firsttext">
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">@font/poppins</item>

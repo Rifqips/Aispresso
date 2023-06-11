@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bangkit.aispresso.data.storage.PreferencesClass
 import com.bangkit.aispresso.databinding.FragmentHomeBinding
+import com.bangkit.aispresso.view.counsultant.CounsultantActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.database.DatabaseReference
@@ -40,6 +41,11 @@ class HomeFragment : Fragment() {
             .load(preferences.getValue("url"))
             .apply(RequestOptions.circleCropTransform())
             .into(binding.ivUser)
+
+
+        binding.cvCounsultant.setOnClickListener {
+            startActivity(Intent(context, CounsultantActivity::class.java))
+        }
     }
 
 }

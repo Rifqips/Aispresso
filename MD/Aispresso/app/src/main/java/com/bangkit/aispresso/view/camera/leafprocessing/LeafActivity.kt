@@ -19,6 +19,8 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import com.bangkit.aispresso.R
 import com.bangkit.aispresso.data.model.history.coffe.ClassifyCoffeModel
 import com.bangkit.aispresso.data.sqlite.ClassifyHelper
@@ -86,7 +88,7 @@ class LeafActivity : AppCompatActivity(), View.OnClickListener {
             }!!
         } else {
             actionBarTitle = "Tambah"
-            btnTitle = "Simpan"
+            btnTitle = "save"
         }
 
 
@@ -237,6 +239,8 @@ class LeafActivity : AppCompatActivity(), View.OnClickListener {
             }
             binding.confidence.text = s
 
+            binding.save.isVisible = true
+            binding.invisibleSave.isInvisible = true
 
             // Releases model resources if no longer used.
             model.close()
