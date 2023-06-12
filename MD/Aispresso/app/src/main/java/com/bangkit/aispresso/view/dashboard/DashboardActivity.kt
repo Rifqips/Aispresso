@@ -6,6 +6,7 @@ import android.view.Gravity
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.bangkit.aispresso.R
 import com.bangkit.aispresso.data.utils.Constanta
@@ -37,8 +38,8 @@ class DashboardActivity : AppCompatActivity() {
 
         binding.fab.setOnClickListener {
             val dialog = Constanta.dialogInfoOption(this, getString(R.string.UI_info_options_camera), Gravity.CENTER)
-            val btnCoffe = dialog.findViewById<Button>(R.id.button_kopi)
-            val btnLeaf = dialog.findViewById<Button>(R.id.button_daun)
+            val btnCoffe = dialog.findViewById<CardView>(R.id.button_kopi)
+            val btnLeaf = dialog.findViewById<CardView>(R.id.button_daun)
             val ivBack = dialog.findViewById<ImageView>(R.id.iv_back)
             btnCoffe.setOnClickListener {
                 startActivity(Intent(this@DashboardActivity, CoffeClasifyActivity::class.java))

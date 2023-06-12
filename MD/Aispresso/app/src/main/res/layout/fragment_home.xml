@@ -260,6 +260,7 @@
             app:layout_constraintTop_toBottomOf="@+id/llSecondContent"/>
 
         <TextView
+            android:id="@+id/tvViewAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/view_all"
@@ -277,17 +278,6 @@
             android:layout_marginVertical="13dp"
             app:layout_constraintEnd_toEndOf="@+id/constParent"
             app:layout_constraintTop_toBottomOf="@+id/llSecondContent"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvFaq"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_next"
-            android:layout_marginVertical="13dp"
-            android:paddingBottom="50dp"
-            app:layout_constraintStart_toStartOf="@+id/constParent"
-            app:layout_constraintEnd_toEndOf="@+id/constParent"
-            app:layout_constraintTop_toBottomOf="@+id/ivArticles"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

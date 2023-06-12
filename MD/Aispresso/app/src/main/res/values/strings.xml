@@ -90,4 +90,5 @@
     <string name="ok">Ok</string>
     <string name="counsultant_recommendation">Counsultant Recommendation</string>
     <string name="counsultant">Counsultant</string>
+    <string name="detail_history">Detail History</string>
 </resources>

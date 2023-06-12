@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv_item_register"
+        android:id="@+id/cv_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="4dp"
@@ -60,7 +60,7 @@
                 android:layout_gravity="top">
 
                 <TextView
-                    android:id="@+id/tv_nama"
+                    android:id="@+id/tv_ttile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -74,7 +74,7 @@
                     tools:text="classified" />
 
                 <TextView
-                    android:id="@+id/tv_alamat"
+                    android:id="@+id/tv_subtitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"

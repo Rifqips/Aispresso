@@ -1,17 +1,22 @@
 package com.bangkit.aispresso.view.adapter.history
 
-import android.app.Activity
+import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.aispresso.R
 import com.bangkit.aispresso.data.model.history.coffe.ClassifyCoffeModel
 import com.bangkit.aispresso.databinding.RcItemBinding
+import com.bangkit.aispresso.view.detil.DetailHistoryActivity
+import java.io.OutputStream
 
 
-class HistoryAdapter() :
+class   HistoryAdapter() :
     RecyclerView.Adapter<HistoryAdapter.RegisterViewHolder>() {
     var listHistory = ArrayList<ClassifyCoffeModel>()
 
@@ -24,10 +29,9 @@ class HistoryAdapter() :
         return RegisterViewHolder(view)
     }
 
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onBindViewHolder(holder: HistoryAdapter.RegisterViewHolder, position: Int) {
         holder.bind(listHistory[position])
-
-
     }
 
     override fun getItemCount(): Int = this.listHistory.size
@@ -44,14 +48,24 @@ class HistoryAdapter() :
 
     inner class RegisterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = RcItemBinding.bind(itemView)
-        fun bind(registerModel: ClassifyCoffeModel) {
+        @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+        fun bind(historyModel: ClassifyCoffeModel) {
             binding.tvNomor.text = createLoopId(adapterPosition)
-            binding.tvNama.text = registerModel.classified
-            binding.tvAlamat.text = registerModel.considers
+            binding.tvTtile.text = historyModel.classified
+            binding.tvSubtitle.text = historyModel.considers
 
-            val registerImage: ByteArray = registerModel.image!!
-            val bitmap = BitmapFactory.decodeByteArray(registerImage, 0, registerImage.size)
+            val historyImage: ByteArray = historyModel.image!!
+            val bitmap = BitmapFactory.decodeByteArray(historyImage, 0, historyImage.size)
             binding.ivFoto.setImageBitmap(bitmap)
+
+            binding.cvItem.setOnClickListener {
+
+                val intent = Intent(it.context, DetailHistoryActivity::class.java)
+                intent.putExtra("gambar", bitmap)
+                intent.putExtra("title", listHistory[position].classified)
+                intent.putExtra("subtitle", listHistory[position].considers)
+                it.context.startActivity(intent)
+            }
 
             //show popup menu
         }
