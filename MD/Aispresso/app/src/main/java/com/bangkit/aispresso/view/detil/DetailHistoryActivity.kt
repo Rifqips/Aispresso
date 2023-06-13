@@ -27,11 +27,11 @@ class DetailHistoryActivity : AppCompatActivity() {
         val item = intent
         val gambar = item.getByteArrayExtra("gambar")
 
-        val bitmap = gambar?.let { BitmapFactory.decodeByteArray(gambar, 0, it.size) }
+//        val bitmap = gambar?.let { BitmapFactory.decodeByteArray(gambar, 0, it.size) }
         val title = item?.getStringExtra("title")
         val subtitle = item?.getStringExtra("subtitle")
 
-        binding.ivUser.setImageBitmap(bitmap)
+//        binding.ivUser.setImageBitmap(bitmap)
         binding.tvTitle.text = title
         binding.tvSubtitle.text = subtitle
     }
