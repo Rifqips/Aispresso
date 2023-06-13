@@ -12,12 +12,14 @@ import android.media.ThumbnailUtils
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
@@ -25,6 +27,7 @@ import com.bangkit.aispresso.R
 import com.bangkit.aispresso.data.model.history.coffe.ClassifyCoffeModel
 import com.bangkit.aispresso.data.sqlite.ClassifyHelper
 import com.bangkit.aispresso.data.sqlite.ClassifybaseRegsiter
+import com.bangkit.aispresso.data.utils.Constanta
 import com.bangkit.aispresso.data.utils.Helper.ALERT_DIALOG_CLOSE
 import com.bangkit.aispresso.data.utils.Helper.ALERT_DIALOG_DELETE
 import com.bangkit.aispresso.data.utils.Helper.EXTRA_POSITION
@@ -34,6 +37,7 @@ import com.bangkit.aispresso.data.utils.Helper.RESULT_DELETE
 import com.bangkit.aispresso.data.utils.Helper.RESULT_UPDATE
 import com.bangkit.aispresso.databinding.ActivityCoffeClasifyBinding
 import com.bangkit.aispresso.ml.Mlkopi
+import com.bangkit.aispresso.view.camera.leafprocessing.LeafActivity
 import com.bangkit.aispresso.view.dashboard.DashboardActivity
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
@@ -142,6 +146,7 @@ class CoffeClasifyActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+
     private fun showAlertDialog(type: Int) {
         val isDialogClose = type == ALERT_DIALOG_CLOSE
         val dialogTitle: String
@@ -245,6 +250,7 @@ class CoffeClasifyActivity : AppCompatActivity(), View.OnClickListener {
 
             binding.save.isVisible = true
             binding.invisibleSave.isInvisible = true
+            expertSystem()
 
             // Releases model resources if no longer used.
             model.close()
@@ -252,6 +258,47 @@ class CoffeClasifyActivity : AppCompatActivity(), View.OnClickListener {
             // TODO Handle the exception
         }
     }
+
+
+    private fun expertSystem(){
+        val textResult = binding.result.text
+
+
+        if (textResult == "Peaberry" ){
+            val dialog = Constanta.dialogExpertSystem(this, getString(R.string.Peaberry), Gravity.CENTER)
+            val ivBack = dialog.findViewById<ImageView>(R.id.iv_back)
+            ivBack.setOnClickListener {
+                dialog.dismiss()
+            }
+            dialog.show()
+        }
+        if (textResult == "Longberry" ){
+            val dialog = Constanta.dialogExpertSystem(this, getString(R.string.Longberry), Gravity.CENTER)
+            val ivBack = dialog.findViewById<ImageView>(R.id.iv_back)
+            ivBack.setOnClickListener {
+                dialog.dismiss()
+            }
+            dialog.show()
+        }
+        if (textResult == "Premium" ){
+            val dialog = Constanta.dialogExpertSystem(this, getString(R.string.Premium), Gravity.CENTER)
+            val ivBack = dialog.findViewById<ImageView>(R.id.iv_back)
+            ivBack.setOnClickListener {
+                dialog.dismiss()
+            }
+            dialog.show()
+        }
+        if (textResult == "Defect" ){
+            val dialog = Constanta.dialogExpertSystem(this, getString(R.string.Defect), Gravity.CENTER)
+            val ivBack = dialog.findViewById<ImageView>(R.id.iv_back)
+            ivBack.setOnClickListener {
+                dialog.dismiss()
+            }
+            dialog.show()
+        }
+
+    }
+
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -12,6 +12,7 @@ import android.media.ThumbnailUtils
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -25,6 +26,7 @@ import com.bangkit.aispresso.R
 import com.bangkit.aispresso.data.model.history.coffe.ClassifyCoffeModel
 import com.bangkit.aispresso.data.sqlite.ClassifyHelper
 import com.bangkit.aispresso.data.sqlite.ClassifybaseRegsiter
+import com.bangkit.aispresso.data.utils.Constanta
 import com.bangkit.aispresso.data.utils.Helper
 import com.bangkit.aispresso.databinding.ActivityCoffeClasifyBinding
 import com.bangkit.aispresso.databinding.ActivityLeafClasifyBinding
@@ -239,6 +241,7 @@ class LeafActivity : AppCompatActivity(), View.OnClickListener {
             }
             binding.confidence.text = s
 
+            expertSystem()
             binding.save.isVisible = true
             binding.invisibleSave.isInvisible = true
 
@@ -247,6 +250,38 @@ class LeafActivity : AppCompatActivity(), View.OnClickListener {
         } catch (e: IOException) {
             // TODO Handle the exception
         }
+    }
+
+
+    private fun expertSystem(){
+        val textResult = binding.result.text
+
+
+        if (textResult == "miner" ){
+            val dialog = Constanta.dialogExpertSystem(this, getString(R.string.Miner), Gravity.CENTER)
+            val ivBack = dialog.findViewById<ImageView>(R.id.iv_back)
+            ivBack.setOnClickListener {
+                dialog.dismiss()
+            }
+            dialog.show()
+        }
+        if (textResult == "phoma" ){
+            val dialog = Constanta.dialogExpertSystem(this, getString(R.string.phoma), Gravity.CENTER)
+            val ivBack = dialog.findViewById<ImageView>(R.id.iv_back)
+            ivBack.setOnClickListener {
+                dialog.dismiss()
+            }
+            dialog.show()
+        }
+        if (textResult == "rust" ){
+            val dialog = Constanta.dialogExpertSystem(this, getString(R.string.rust), Gravity.CENTER)
+            val ivBack = dialog.findViewById<ImageView>(R.id.iv_back)
+            ivBack.setOnClickListener {
+                dialog.dismiss()
+            }
+            dialog.show()
+        }
+
     }
 
 

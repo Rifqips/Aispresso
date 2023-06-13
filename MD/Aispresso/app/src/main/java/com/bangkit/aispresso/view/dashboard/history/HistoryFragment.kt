@@ -13,6 +13,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bangkit.aispresso.R
 import com.bangkit.aispresso.data.model.history.coffe.ClassifyCoffeModel
 import com.bangkit.aispresso.data.sqlite.ClassifyHelper
@@ -69,7 +70,7 @@ class HistoryFragment : Fragment() {
             }
         }
 
-        var executor: Executor = ContextCompat.getMainExecutor(requireContext())
+        val executor: Executor = ContextCompat.getMainExecutor(requireContext())
 
         biometricPrompt =
             BiometricPrompt(this, executor, object : BiometricPrompt.AuthenticationCallback() {

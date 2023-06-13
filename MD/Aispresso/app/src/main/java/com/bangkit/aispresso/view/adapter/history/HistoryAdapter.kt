@@ -16,7 +16,7 @@ import com.bangkit.aispresso.view.detil.DetailHistoryActivity
 import java.io.OutputStream
 
 
-class   HistoryAdapter() :
+class HistoryAdapter() :
     RecyclerView.Adapter<HistoryAdapter.RegisterViewHolder>() {
     var listHistory = ArrayList<ClassifyCoffeModel>()
 

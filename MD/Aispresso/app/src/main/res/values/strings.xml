@@ -16,6 +16,63 @@
         👉🏻 shutter button to take a picture using the camera \n
         👉🏻 switch button to rotate camera lens
     </string>
+
+
+    <string name="Miner">
+        How to fix it : \n
+        👉🏻 Protect plants with a green house, thus flies and other insects cannot enter the garden area. \n
+        👉🏻 Install insect traps or yellow traps on plant areas. \n
+        👉🏻 On plants that have already been attacked by leaf miners, cut the petioles that have been attacked by the pest and then burned. \n
+        👉🏻 Carry out biological control by spraying with vegetable pesticides so that no chemical residues are left on the plants. \n
+        👉🏻 Lakukan pengendalian secara alamiah dengan cara melakukan rotasi tanaman, lakukan penanaman dengan jenis tanaman yang berganti-ganti.
+    </string>
+
+    <string name="phoma">
+        How to fix it : \n
+        👉🏻 Biological Control : The disease can be controlled by spraying copper oxychloride (0.3%) right after the appearance of the first symptoms and subsequent sprays at 20-day intervals. Treating fruits with neem leaf extract with a combination of cold storage completely inhibits the growth of a series of pathogens on fruits during storage. \n
+        👉🏻 Chemical Control : Always consider an integrated approach with preventive measures along with biological treatments if available. Spraying fungicides after the initial appearance, followed by 0.3% miltox at 20-day intervals work well to curb the fungus. \n
+        👉🏻 Precautions : Clean the storage facility thoroughly to avoid mold growth during storage. \n
+    </string>
+    <string name="rust">
+        How to fix it : \n
+        👉🏻 Biological Control : Bioinsecticides based on species Bacillus subtilis, Arthrobacter and Streptomyces have a noticeable effect in inhibiting the progression of the disease. \n
+        👉🏻 Chemical Control :Always consider an integrated approach with preventive measures along with biological treatments. Triazole and strobilurin fungicides show promising results in controlling chickpea rust. \n
+        👉🏻 Precautions :  \n
+            1. Plant resistant or tolerant varieties. \n
+            2. Do not plant chickpeas in infected places. \n
+            3. Intercrop with non-host plants such as corn. \n
+            4. Remove weeds and wild plants from the field. \n
+            5. Avoid over-irrigation and do not use bulk sprinklers. \n
+            6. Cut and remove all infected parts of the plant. \n
+            7. After planting, clean and remove all plant debris. \n
+            8. Choose and schedule planting and irrigation dates carefully to avoid prolonged leaf wetting when temperatures are high.
+            9. Avoid excessive nitrogen use and ensure adequate potassium fertilization.  \n
+    </string>
+
+    <!--kopi-->
+    <string name="Peaberry">
+        👉🏻 Highest price in 2023 : \n
+            Rp. 129.000  \n
+        👉🏻 lowest price in 2023 \n
+            Rp. 89.000
+    </string>
+    <string name="Longberry">
+        👉🏻 Highest price in 2023 : \n
+            Rp. 225.000  \n
+        👉🏻 lowest price in 2023 \n
+            Rp. 179.000
+    </string>
+    <string name="Premium">
+        👉🏻 Highest price in 2023 : \n
+            Rp. 325.000  \n
+        👉🏻 lowest price in 2023 \n
+            Rp. 279.000
+    </string>
+    <string name="Defect">
+        Try another image
+    </string>
+
+
     <string name="UI_info_options_camera">
         Please select the processing option
     </string>
