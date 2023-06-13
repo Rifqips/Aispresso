@@ -77,6 +77,10 @@
         Please select the processing option
     </string>
 
+    <string name="logout_permession">
+        Are you sure wan\'t to logout ?
+    </string>
+
     <string name="onboarding_slide3_title">Cari investor kamu </string>
     <string name="onboarding_slide3_subtitle">Di aispresso</string>
     <string name="onboarding_slide3_desc">Berpartisipasi dalam perekonomian lokal.</string>
@@ -148,4 +152,8 @@
     <string name="counsultant_recommendation">Counsultant Recommendation</string>
     <string name="counsultant">Counsultant</string>
     <string name="detail_history">Detail History</string>
+    <string name="logout">Logout</string>
+    <string name="are_you_sure_wan_t_to_logout">Are you sure wan\'t to logout ?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

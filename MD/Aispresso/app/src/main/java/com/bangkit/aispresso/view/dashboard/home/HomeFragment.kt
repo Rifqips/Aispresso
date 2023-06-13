@@ -42,11 +42,6 @@ class HomeFragment : Fragment() {
         mFirebaseInstance = FirebaseDatabase.getInstance().reference
         binding.tvUser.text = preferences.getValue("username")
 
-        Glide.with(this)
-            .load(preferences.getValue("url"))
-            .apply(RequestOptions.circleCropTransform())
-            .into(binding.ivUser)
-
         binding.tvViewAll.setOnClickListener {
             startActivity(Intent(context, FaqActivity::class.java))
         }
@@ -55,7 +50,4 @@ class HomeFragment : Fragment() {
             startActivity(Intent(context, CounsultantActivity::class.java))
         }
     }
-
-
-
 }

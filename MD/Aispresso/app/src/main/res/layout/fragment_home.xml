@@ -29,16 +29,9 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_notif"
-            app:layout_constraintEnd_toStartOf="@+id/ivUser"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <ImageView
-            android:id="@+id/ivUser"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/addpicture"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="20dp"/>
 
         <TextView
             android:id="@+id/tvUser"
