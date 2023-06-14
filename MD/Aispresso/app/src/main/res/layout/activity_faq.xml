@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_arrow_next"
         android:layout_marginVertical="40dp"
-        android:paddingBottom="40dp"
+        android:paddingBottom="100dp"
         android:paddingHorizontal="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
