@@ -13,12 +13,11 @@
 
 ## Mobile Development
 
-Version Used : 
-Android Studio	: 3.2-8.0 Flamingo | 2022.2.1
-Kotlin Version	: 1.7
-Target SDK 	: 33
-Min SDK		: 24
-Gradle		: 7.2
+- Version Used        : Android Studio	: 3.2-8.0 Flamingo | 2022.2.1
+- Kotlin Version    	: 1.7
+- Target SDK 	        : 33
+- Min SDK		          : 24
+- Gradle-properties   : 7.2
 
 1.	Open the Aispresso application.
 2.	Read the Onboarding to understand the features of Aispresso.
