@@ -80,6 +80,18 @@
     <string name="logout_permession">
         Are you sure wan\'t to logout ?
     </string>
+    <string name="chat_constructor">
+        chat is under constructor
+    </string>
+    <string name="counsultant_constructor">
+        counsultant is under constructor
+    </string>
+    <string name="forum_constructor">
+        forum is under constructor
+    </string>
+    <string name="investor_constructor">
+        investor is under constructor
+    </string>
 
     <string name="onboarding_slide3_title">Cari investor kamu </string>
     <string name="onboarding_slide3_subtitle">Di aispresso</string>

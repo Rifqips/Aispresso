@@ -40,7 +40,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
-    <com.bangkit.aispresso.view.customview.EditTextEmail
+    <com.bangkit.aispresso.view.customview.EditTextClear
         android:id="@+id/ed_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,6 +48,7 @@
         android:layout_marginTop="20dp"
         android:inputType="textEmailAddress"
         android:paddingHorizontal="20dp"
+        android:hint="@string/username"
         android:paddingVertical="15dp"
         android:transitionName="email"
         app:layout_constraintEnd_toEndOf="parent"

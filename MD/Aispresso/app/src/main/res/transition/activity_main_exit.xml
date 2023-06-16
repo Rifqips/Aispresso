@@ -10,11 +10,11 @@
             <target android:targetId="@id/container" />
         </targets>
         <transition
-                class="com.capstonebangkit.itscoffe.view.onboarding.core.PopTransition"
+                class="com.bangkit.aispresso.view.onboarding.core.PopTransition"
                 app:startScale="1.0"
                 app:endScale="0.95"/>
         <transition
-                class="com.capstonebangkit.itscoffe.view.onboarding.core.FadeTransition"
+                class="com.bangkit.aispresso.view.onboarding.core.FadeTransition"
                 app:startAlpha="1.0"
                 app:endAlpha="0.3"/>
     </transitionSet>

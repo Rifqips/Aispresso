@@ -71,8 +71,8 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun pushLogin(iUsername: String, iPassword: String) {
-        mDatabase.child(iUsername).addValueEventListener(object : ValueEventListener {
+    private fun pushLogin(iUseremail: String, iPassword: String) {
+        mDatabase.child(iUseremail).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 val user = dataSnapshot.getValue(User::class.java)
@@ -81,9 +81,8 @@ class LoginFragment : Fragment() {
                 }
                 else {
                     if(user.password.equals(iPassword)){
-
-                        preference.setValue("user", user.username.toString())
                         preference.setValue("email", user.email.toString())
+                        preference.setValue("user", user.username.toString())
                         preference.setValue("status", "1")
 
                         val intent = Intent(requireActivity(), DashboardActivity::class.java)

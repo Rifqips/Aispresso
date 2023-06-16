@@ -2,14 +2,18 @@ package com.bangkit.aispresso.view.dashboard.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bangkit.aispresso.R
 import com.bangkit.aispresso.data.model.faq.FaqSingleton
 import com.bangkit.aispresso.data.storage.PreferencesClass
+import com.bangkit.aispresso.data.utils.Constanta
 import com.bangkit.aispresso.databinding.FragmentHomeBinding
 import com.bangkit.aispresso.view.adapter.faq.FaqAdapter
 import com.bangkit.aispresso.view.counsultant.CounsultantActivity
@@ -48,6 +52,33 @@ class HomeFragment : Fragment() {
 
         binding.cvCounsultant.setOnClickListener {
             startActivity(Intent(context, CounsultantActivity::class.java))
+        }
+
+        binding.cvChat.setOnClickListener {
+            val dialog = Constanta.dialogExpertSystem(requireContext(), getString(R.string.chat_constructor), Gravity.CENTER)
+            val ivBack = dialog.findViewById<ImageView>(R.id.iv_back)
+            ivBack.setOnClickListener {
+                dialog.dismiss()
+            }
+            dialog.show()
+        }
+
+        binding.cvForum.setOnClickListener {
+            val dialog = Constanta.dialogExpertSystem(requireContext(), getString(R.string.forum_constructor), Gravity.CENTER)
+            val ivBack = dialog.findViewById<ImageView>(R.id.iv_back)
+            ivBack.setOnClickListener {
+                dialog.dismiss()
+            }
+            dialog.show()
+        }
+
+        binding.cvInvestor.setOnClickListener {
+            val dialog = Constanta.dialogExpertSystem(requireContext(), getString(R.string.investor_constructor), Gravity.CENTER)
+            val ivBack = dialog.findViewById<ImageView>(R.id.iv_back)
+            ivBack.setOnClickListener {
+                dialog.dismiss()
+            }
+            dialog.show()
         }
     }
 }

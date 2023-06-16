@@ -11,11 +11,11 @@
                 />
         </targets>
         <transition
-                class="com.omni.onboardingscreen.core.PopTransition"
+                class="com.bangkit.aispresso.view.onboarding.core.PopTransition"
                 app:startScale="0.95"
                 app:endScale="1.0"/>
         <transition
-                class="com.omni.onboardingscreen.core.FadeTransition"
+                class="com.bangkit.aispresso.view.onboarding.core.FadeTransition"
                 app:startAlpha="0.3"
                 app:endAlpha="1.0"/>
     </transitionSet>
