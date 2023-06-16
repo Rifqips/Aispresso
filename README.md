@@ -64,7 +64,7 @@ https://aispresso-e22whqvy2q-uc.a.run.app/
 
 -------------------------------------------------------------------------
 
-Register
+### Register
 
 Path: 
 /auth/register
@@ -73,13 +73,16 @@ Method:
 POST
 
 Request body: 
-name as string
-email as string
-password as string must be at least 8 characters
+
+- name as string
+
+- email as string
+
+- password as string must be at least 8 characters
 
 -------------------------------------------------------------------------
 
-Login
+### Login
 
 Path:
 auth/login
@@ -88,5 +91,7 @@ Method:
 POST
 
 Request Body:
-email as string
-password as string
+
+- email as string
+
+- password as string
