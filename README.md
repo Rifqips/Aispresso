@@ -1,4 +1,14 @@
 # Documentation
+
+1. Create ML model &  API  (for information and health facilities)
+2. Convert ML model to tflite
+3. Deploy API to google cloud using Google app engine
+4. Create android project using android studio
+5. Import some library that we need
+6. Download and copy tflite model to asset folder in android studio
+7. Using tflite library to get data prediction
+8. Using retrofit to get data from API
+
 ## Mobile Development
 
 1.	Open the Aispresso application.
@@ -40,14 +50,5 @@ the steps to create an ML model
 14.	Save the model
 15.	Convert the model to Tensorflow Lite
 
-Documentation
-1. Create ML model &  API  (for information and health facilities)
-2. Convert ML model to tflite
-3. Deploy API to google cloud using Google app engine
-4. Create android project using android studio
-5. Import some library that we need
-6. Download and copy tflite model to asset folder in android studio
-7. Using tflite library to get data prediction
-8. Using retrofit to get data from API
 
 ## Cloud Computing
