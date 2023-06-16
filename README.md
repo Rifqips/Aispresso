@@ -65,6 +65,7 @@ https://aispresso-e22whqvy2q-uc.a.run.app/
 -------------------------------------------------------------------------
 
 Register
+
 Path: 
 /auth/register
 
@@ -79,6 +80,7 @@ password as string must be at least 8 characters
 -------------------------------------------------------------------------
 
 Login
+
 Path:
 auth/login
 
