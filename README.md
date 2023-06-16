@@ -1,15 +1,24 @@
 # Documentation
 
-1. Create ML model &  API  (for information and health facilities)
-2. Convert ML model to tflite
-3. Deploy API to google cloud using Google app engine
-4. Create android project using android studio
-5. Import some library that we need
-6. Download and copy tflite model to asset folder in android studio
-7. Using tflite library to get data prediction
-8. Using retrofit to get data from API
+1. Create ML & API models (for health information and facilities)
+2. Convert ML models to tflite
+3. Deploy API to google cloud using Google application engine
+4. Create an android project using android studio
+5. Import some of the libraries we need
+6. Download and copy the tflite model to assets folder in android studio
+7, Using the tflite library to get data predictions
+8. Implementation of the Google Wheater API, and firebase to support application development
+9. Using retrofit to get data from API
+10 fixing bugs
 
 ## Mobile Development
+
+Version Used : 
+Android Studio	: 3.2-8.0 Flamingo | 2022.2.1
+Kotlin Version	: 1.7
+Target SDK 	: 33
+Min SDK		: 24
+Gradle		: 7.2
 
 1.	Open the Aispresso application.
 2.	Read the Onboarding to understand the features of Aispresso.
