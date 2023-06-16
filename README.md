@@ -52,3 +52,39 @@ the steps to create an ML model
 
 
 ## Cloud Computing
+
+Cloud Computing Path
+Creating RESTful APIs and deploying to Google Cloud Platform by using Cloud Run for connection between android application and database. Using Cloud SQL for creating the database server.
+
+RESTful APIs
+In making the RESTful APIs we use NodeJS with the Express Framework for building an API server, and for responses using JSON format. Explanation for each URL that can be used :
+
+Base URL :
+https://aispresso-e22whqvy2q-uc.a.run.app/
+
+-------------------------------------------------------------------------
+
+Register
+Path: 
+/auth/register
+
+Method:
+POST
+
+Request body: 
+name as string
+email as string
+password as string must be at least 8 characters
+
+-------------------------------------------------------------------------
+
+Login
+Path:
+auth/login
+
+Method: 
+POST
+
+Request Body:
+email as string
+password as string
