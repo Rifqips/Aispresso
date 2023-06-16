@@ -36,19 +36,21 @@
 the steps to create an ML model
 1.	Check the version of Tensorflow
 2.	Import all required library
-3.	Gather dataset
-4.	Import dataset
-5.	Split dataset and make dataset directory
-6.	Preprocess the dataset: Image Augmentation
-7.	Create model using transfer learning with ResNet and MobileNet
-8.	Create callback for data training
-9.	Define loss, optimizer, and metrics
-10.	Define epoch for data training
-11.	Train the data
-12.	Plot training and validation accuracy
-13.	Predict images with the created model
-14.	Save the model
-15.	Convert the model to Tensorflow Lite
+3.	Create ML model &  API  (for information and health facilities)
+4.  Convert ML model to tflite
+5.	Deploy API to google cloud using Google app engine
+6.	Create android project using android studio
+7.	Import some library that we need
+8.	Download and copy tflite model to asset folder in android studio
+9.	Using tflite library to get data prediction
+10.	Using retrofit to get data from API
+11.	Define loss, optimizer, and metrics
+12.	Define epoch for data training
+13.	Train the data
+14.	Plot training and validation accuracy
+15.	Predict images with the created model
+16.	Save the model
+17.	Convert the model to Tensorflow Lite
 
 
 ## Cloud Computing
