@@ -1,23 +1,6 @@
 # Documentation
 
-1. Create ML & API models (for health information and facilities)
-2. Convert ML models to tflite
-3. Deploy API to google cloud using Google application engine
-4. Create an android project using android studio
-5. Import some of the libraries we need
-6. Download and copy the tflite model to assets folder in android studio
-7, Using the tflite library to get data predictions
-8. Implementation of the Google Wheater API, and firebase to support application development
-9. Using retrofit to get data from API
-10 fixing bugs
-
-## Mobile Development
-
-- Version Used        : Android Studio	: 3.2-8.0 Flamingo | 2022.2.1
-- Kotlin Version    	: 1.7
-- Target SDK 	        : 33
-- Min SDK		          : 24
-- Gradle-properties   : 7.2
+## Application Flow
 
 1.	Open the Aispresso application.
 2.	Read the Onboarding to understand the features of Aispresso.
@@ -32,6 +15,35 @@
 11.	Users can select a specific data entry to view its details.
 12.	Return to the Home page, tap the Weather icon to access the Weather page, and view the current weather conditions at the user's location.
 13.	Users can tap their profile to access the Profile page and press Logout to return to the Login page.
+
+
+## Here is what we have done
+
+1. Create ML & API models (for health information and facilities)
+2. Convert ML models to tflite
+3. Deploy API to google cloud using Google application engine
+4. Create an android project using android studio
+5. Import some of the libraries we need
+6. Download and copy the tflite model to assets folder in android studio
+7, Using the tflite library to get data predictions
+8. Implementation of the Google Wheater API, and firebase to support application development
+9. Using retrofit to get data from API
+10 fixing bugs
+
+
+## Mobile Development
+
+- Version Used        : Android Studio	: 3.2-8.0 Flamingo | 2022.2.1
+- Kotlin Version    	: 1.7
+- Target SDK 	        : 33
+- Min SDK		          : 24
+- Gradle-properties   : 7.2
+
+1. Download this repository
+2. Extract the "Aispresso" folder.
+3. Open Android Studio
+4. Select & Open Android Studio
+5. Build the app
 
 
 ## Machine Learning
