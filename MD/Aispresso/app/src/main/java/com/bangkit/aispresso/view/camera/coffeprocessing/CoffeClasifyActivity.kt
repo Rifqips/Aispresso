@@ -37,8 +37,17 @@ import com.bangkit.aispresso.data.utils.Helper.RESULT_DELETE
 import com.bangkit.aispresso.data.utils.Helper.RESULT_UPDATE
 import com.bangkit.aispresso.databinding.ActivityCoffeClasifyBinding
 import com.bangkit.aispresso.ml.Mlkopi
+import com.bangkit.aispresso.view.admoob.AdsActivity
 import com.bangkit.aispresso.view.camera.leafprocessing.LeafActivity
 import com.bangkit.aispresso.view.dashboard.DashboardActivity
+import com.bangkit.aispresso.view.midtrans.MidtransActivity
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.google.android.gms.ads.rewarded.RewardedAd
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.io.ByteArrayOutputStream
@@ -49,6 +58,8 @@ import java.nio.ByteOrder
 class CoffeClasifyActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding : ActivityCoffeClasifyBinding
+    private var mInterstitialAd: InterstitialAd? = null
+    private var mRewardedAd: RewardedAd? = null
 
     var imageSize = 224
 
@@ -67,6 +78,10 @@ class CoffeClasifyActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityCoffeClasifyBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        MobileAds.initialize(this) {}
+        val adRequest = AdRequest.Builder().build()
+        binding.bannerID.loadAd(adRequest) // Banner load
 
         classifyHelper = ClassifyHelper.getInstance(applicationContext)
         classifyHelper.open()
@@ -135,14 +150,68 @@ class CoffeClasifyActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         binding.button.setOnClickListener{
-            // Launch camera if we have permission
-            if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                startActivityForResult(cameraIntent, 1)
-            } else {
-                //Request camera permission if we don't have it.
-                requestPermissions(arrayOf(Manifest.permission.CAMERA), 100)
+            val dialog = Constanta.dialogCameraOption(this, getString(R.string.UI_info_options_camera), Gravity.CENTER)
+            val btnAds = dialog.findViewById<CardView>(R.id.cv_ads)
+            val btnPremium = dialog.findViewById<CardView>(R.id.cv_premium)
+            val ivBack = dialog.findViewById<ImageView>(R.id.iv_back)
+            btnAds.setOnClickListener {
+                RewardedAd.load(this,
+                    CoffeClasifyActivity.REWARDED_AD,
+                    adRequest,
+                    object : RewardedAdLoadCallback() {
+                        override fun onAdFailedToLoad(adError: LoadAdError) {
+                            showMessage(adError.message)
+                            mRewardedAd = null
+                            Intent(this@CoffeClasifyActivity, AdsActivity::class.java).apply {
+                                startActivity(this)
+                            }
+                        }
+
+                        override fun onAdLoaded(rewardedAd: RewardedAd) {
+                            showMessage(getString(R.string.ad_info))
+                            mRewardedAd = rewardedAd
+                            mRewardedAd?.show(this@CoffeClasifyActivity) { rewardItem ->
+                                val rewardAmount = rewardItem.amount
+                                showMessage(getString(R.string.rewarded_info) + " " + rewardAmount)
+                            }
+                        }
+                    })
+                InterstitialAd.load(this,
+                    CoffeClasifyActivity.INTERSTITIAL_AD,
+                    adRequest,
+                    object : InterstitialAdLoadCallback() {
+                        override fun onAdFailedToLoad(adError: LoadAdError) {
+                            showMessage(adError.message)
+                            mInterstitialAd = null
+                            Intent(this@CoffeClasifyActivity, AdsActivity::class.java).apply {
+                                startActivity(this)
+                            }
+                        }
+
+                        override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                            showMessage(getString(R.string.ad_info))
+                            mInterstitialAd = interstitialAd
+                            mInterstitialAd?.show(this@CoffeClasifyActivity)
+
+                            if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                                val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                                startActivityForResult(cameraIntent, 1)
+                            } else {
+                                //Request camera permission if we don't have it.
+                                requestPermissions(arrayOf(Manifest.permission.CAMERA), 100)
+                            }
+                        }
+                    })
+                dialog.dismiss()
             }
+            btnPremium.setOnClickListener {
+                startActivity(Intent(this@CoffeClasifyActivity, MidtransActivity::class.java))
+                dialog.dismiss()
+            }
+            ivBack.setOnClickListener {
+                dialog.dismiss()
+            }
+            dialog.show()
         }
     }
 
@@ -259,7 +328,6 @@ class CoffeClasifyActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-
     private fun expertSystem(){
         val textResult = binding.result.text
 
@@ -369,5 +437,13 @@ class CoffeClasifyActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
+    }
+    private fun showMessage(message: String) {
+        Toast.makeText(this@CoffeClasifyActivity, message, Toast.LENGTH_LONG).show()
+    }
+    companion object {
+        private const val TAG = "ANDROID ADMOB SAMPLE"
+        private const val INTERSTITIAL_AD = "ca-app-pub-3940256099942544/1033173712"
+        private const val REWARDED_AD = "ca-app-pub-3940256099942544/5224354917"
     }
 }
